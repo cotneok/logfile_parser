@@ -11,7 +11,13 @@ module Validate
       end
 
       def validate_entry
+        raise Errors::NoArguments if arg.nil?
 
+        file_path = arg
+
+        raise Errors::FileNotFound, file_path unless File.exist? file_path
+
+        file_path
       end
     end
 
