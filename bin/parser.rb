@@ -9,6 +9,14 @@ file_path = arg_parser.validate_entry
 file_parser = LogfileParser.read_file(file_path)
 entry_sorter = EntrySorter.new(file_parser.entries)
 
-entry_sorter.sort(unique: false / true).each do |entry|
+puts 'List of webpages with most page views in descending order: '
+entry_sorter.sort(unique: false).each do |entry|
   puts "#{entry[0]} #{entry[1]} views"
+end
+
+puts "\n" * 3
+
+puts 'List of webpages with most unique page views in descending order: '
+entry_sorter.sort(unique: true).each do |entry|
+  puts "#{entry[0]} #{entry[1]} unique views"
 end
