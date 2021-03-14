@@ -5,7 +5,7 @@ require './lib/logfile_parser'
 require 'faker'
 require './spec/spec_helper'
 
-describe EntrySorter do
+RSpec.describe EntrySorter do
   before :each do
     activity_log = Struct.new(:path, :ip)
 

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Reads data from file
 class LogfileParser
   attr_accessor :filename
   attr_reader   :entries

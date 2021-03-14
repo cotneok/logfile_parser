@@ -4,7 +4,7 @@ require './lib/logfile_parser'
 require 'faker'
 require './spec/spec_helper'
 
-describe LogfileParser do
+RSpec.describe LogfileParser do
   describe '#new' do
     it 'should have [] entries' do
       expect(LogfileParser.new.entries).to eq([])
