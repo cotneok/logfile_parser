@@ -8,16 +8,16 @@ class EntrySorter
 
   def sort(unique: false, order: :desc)
     modifier = sort_modifier(order)
-    log_entries(unique, modifier)
+    entries = log_entries(unique)
+    entries.sort { |a, b| modifier * a[1] <=> modifier * b[1] }
   end
 
   private
 
-  def log_entries(unique, modifier)
+  def log_entries(unique)
     @log_entries
       .each_with_object({}) { |entry, acc| acc[entry.path] = (acc[entry.path] || []) + [entry.ip] }
       .map { |key, value| [key, unique ? value.uniq.count : value.count] }
-      .sort { |a, b| modifier * a[1] <=> modifier * b[1] }
   end
 
   def sort_modifier(sort_order)
